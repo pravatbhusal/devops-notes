@@ -8,7 +8,7 @@ Run `npm test` to test the application.
 This is a repository that showcases how to write unit tests, integration tests, and end-to-end (E2E) tests using Jest, React Testing Library, and Cypress.
 - [Jest](https://jestjs.io/) is a JS testing framework
 - [React Testing Library](https://testing-library.com/docs/react-testing-library/intro/) is a React testing library used with Jest
-- [Pupeteer](https://github.com/puppeteer/puppeteer) is a library that provides a Chrome API to run E2E tests
+- [Cypress](https://www.cypress.io/) is a library that provides a Chrome API to run E2E tests
 
 ### Jest
 Jest will pick up any tests as defined under https://create-react-app.dev/docs/running-tests/. In this project, I am defining my tests under __tests__ folders. To run the tests, execute ```npm test```.

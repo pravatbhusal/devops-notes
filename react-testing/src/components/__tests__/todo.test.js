@@ -2,35 +2,35 @@ import { render, screen } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import Todo from '../Todo';
 
-test('Testing Todo component - completed false', () => {
+test('Todo item with completed false', () => {
     const todo = { id: 1, title: 'Wash dishes', completed: false };
     render(<Todo todo={todo} />);
 
     const todoElement = screen.getByTestId('todo-1');
 
-    // Asserts the element with data-testid "todo-1" to exist in the DOM
+    // Verify the element with data-testid "todo-1" to exist in the DOM
     expect(todoElement).toBeInTheDocument();
 
-    // Asserts todoElement to have the text "Wash dishes"
+    // Verify todoElement to have the text "Wash dishes"
     expect(todoElement).toHaveTextContent('Wash dishes');
 
-    // Asserts that todoElement is not striked, so that means it's not completed
+    // Verify that todoElement is not striked, so that means it's not completed
     expect(todoElement).not.toContainHTML('strike');
 });
 
-test('Testing Todo component - completed true', () => {
+test('Todo item with completed true', () => {
     const todo = { id: 1, title: 'Make dinner', completed: true };
     render(<Todo todo={todo} />);
 
     const todoElement = screen.getByTestId('todo-1');
 
-    // Asserts the element with data-testid "todo-1" to exist in the DOM
+    // Verify the element with data-testid "todo-1" to exist in the DOM
     expect(todoElement).toBeInTheDocument();
 
-    // Asserts todoElement to have the text "Make dinner"
+    // Verify todoElement to have the text "Make dinner"
     expect(todoElement).toHaveTextContent('Make dinner');
 
-    // Asserts that todoElement is striked, so that means it's completed
+    // Verify that todoElement is striked, so that means it's completed
     expect(todoElement).toContainHTML('strike');
 });
 
