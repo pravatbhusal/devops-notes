@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import TodoList from '../TodoList';
 
-test('Add a new completed todo item into the todo list', () => {
+test('Unit Test - Reset the todo list inputs whenever adding a new todo item', () => {
     render(<TodoList />);
 
     // We can get the elements by simplying specifying the type of element to the testing-library
@@ -21,17 +21,12 @@ test('Add a new completed todo item into the todo list', () => {
     // Add the new todo item
     userEvent.click(addTodoBtn);
 
-    // Verify the title is empty and checkbox is unchecked
+    // Verify the title is reset to empty and checkbox is unchecked
     expect(todoTitleInput).toHaveValue('');
     expect(todoCompletedCheckbox).not.toBeChecked();
-
-    // Verify the new todo item was added into the todo list
-    const todoElement = screen.getByTestId('todo-1');
-    expect(todoElement).toHaveTextContent('Code unit tests');
-    expect(todoElement).toContainHTML('strike');
 });
 
-test('Add multiple todo items into the todo list', () => {
+test('Integration Test - Add multiple todo items into the todo list', () => {
     render(<TodoList />);
 
     const todoTitleInput = screen.getByRole('textbox');

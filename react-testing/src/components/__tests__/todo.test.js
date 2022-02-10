@@ -2,7 +2,7 @@ import { render, screen } from '@testing-library/react';
 import renderer from 'react-test-renderer';
 import Todo from '../Todo';
 
-test('Todo item with completed false', () => {
+test('Unit Test - Todo item with completed false', () => {
     const todo = { id: 1, title: 'Wash dishes', completed: false };
     render(<Todo todo={todo} />);
 
@@ -18,7 +18,7 @@ test('Todo item with completed false', () => {
     expect(todoElement).not.toContainHTML('strike');
 });
 
-test('Todo item with completed true', () => {
+test('Unit Test - Todo item with completed true', () => {
     const todo = { id: 1, title: 'Make dinner', completed: true };
     render(<Todo todo={todo} />);
 
@@ -34,7 +34,7 @@ test('Todo item with completed true', () => {
     expect(todoElement).toContainHTML('strike');
 });
 
-test('Renderer tree matches todo.test.js.snap', () => {
+test('Unit Test - Renderer tree matches todo.test.js.snap', () => {
     const todo = { id: 1, title: 'Eat food', completed: true };
 
     // Returns a JSON tree of the Todo component
