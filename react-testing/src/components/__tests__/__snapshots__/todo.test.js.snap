@@ -1,0 +1,13 @@
+// Jest Snapshot v1, https://goo.gl/fbAQLP
+
+exports[`Unit Test - Renderer tree matches todo.test.js.snap 1`] = `
+<div
+  data-testid="todo-1"
+>
+  <strike>
+    <h1>
+      Eat food
+    </h1>
+  </strike>
+</div>
+`;
