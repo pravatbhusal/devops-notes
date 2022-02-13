@@ -1,0 +1,15 @@
+version: '3'
+services:
+  app:
+    container_name: docker-node-mongo
+    restart: always # If it fails, simply restart the container
+    build: . # Looks at the current directory for the Dockerfile to build the image
+    ports:
+      - '80:3000'
+    links:
+      - mongo # Links to our mongo container
+  mongo:
+    container_name: mongo
+    image: mongo # Define the mongo image since we're not building from a Dockerfile for the mongo service, so it'll pull from DockerHub
+    ports:
+      - '27017:27017'

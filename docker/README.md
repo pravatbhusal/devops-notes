@@ -63,3 +63,21 @@ I created a Dockerfile defined in `bind-mount/Dockerfile`. To run the Dockerfile
 Now if you run `docker images`, you'll see the new shadowsych/pravat-nginx image! Now we can create a container from that image by running `docker container run -d -p 8080:80 shadowsych/pravat-nginx`. Now if you go to `localhost:8080`, you can see it's using the files from the `bind-mount` folder because that's what our Dockerfile does for us.
 
 If you want to push this new image into DockerHub, you can run `docker push shadowsych/pravat-nginx`. If you get a message about authentication, just do `docker login` to login to DockerHub. Now you can see your image published on DockerHub https://hub.docker.com/r/shadowsych/pravat-nginx.
+
+# Docker Compose
+Docker compose is a container orchestration framework to run multi-container Docker apps. This is a more lightweight version of Kubertnetes, where Kubernetes runs containers over a number of computers while Docker compose just runs on a single computer.
+
+The `compose` folder has a sample NodeJS and MongoDB application that we use with Docker Compose to run and manage multiple containers.
+
+## 1. docker-compose.yml
+The `docker-compose.yml` defines the services that make up our entire app. It can define the containers to run, from what image to run those containers, what ports to use, and what containers are linked together.
+
+## 2. .dockerignore
+Excludes files that are not necessary when Docker builds the image from the Dockerfile. This is like the .gitignore file used by GitHub.
+
+## 3. docker-compose up
+Run `docker-compose up` to run the `docker-compose.yml` file, once this finishes running go to `localhost:80` and you can see the app! If you want to run
+it in the background, you can run `docker compose up -d`.
+
+## 4. docker-compose down
+You can either Ctrl + C on the terminal command `docker-compose up` or run `docker-compose down` to remove the running containers.
