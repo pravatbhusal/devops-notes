@@ -70,7 +70,9 @@ Docker compose is a container orchestration framework to run multi-container Doc
 The `compose` folder has a sample NodeJS and MongoDB application that we use with Docker Compose to run and manage multiple containers.
 
 ## 1. docker-compose.yml
-The `docker-compose.yml` defines the services that make up our entire app. It can define the containers to run, from what image to run those containers, what ports to use, and what containers are linked together.
+The `docker-compose.yml` defines the services that make up our entire app. It can define the containers to run, from what image to run those containers, what ports to use, and what containers are dependent on each other.
+
+Here is the docs for the docker-compose.yml file in version 3: https://docs.docker.com/compose/compose-file/compose-file-v3/
 
 ## 2. .dockerignore
 Excludes files that are not necessary when Docker builds the image from the Dockerfile. This is like the .gitignore file used by GitHub.
