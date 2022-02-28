@@ -1,0 +1,98 @@
+// Define a global Groovy variable named gv
+def gv
+
+pipeline {
+    /*
+    agent defines "where to execute". In this case we're using "any", so it will build
+    on the next available agent. An agent is an executable job running on a node.
+    */
+    agent any
+
+    // Define custom environmental variables here.
+    environment {
+        APP_NAME = 'My first pipeline'
+    }
+
+    // Access build tools for your projects here, such as maven, ant, etc.
+    tools {
+        // Use the maven tool with the tool name of 'Maven'
+        maven 'Maven'
+    }
+
+    // Parameters are variables that can be used on runtime of our Jenkins jobs
+    parameters {
+        choice(name: 'VERSION', choices: ['1.1.0', '1.2.0', '1.3.0'], description: 'version number of app')
+        booleanParam(name: 'executeTests', defaultValue: true, description: 'execute the test stage?')
+    }
+
+    /*
+    stages are where the work of a pipeline is separated out. The below example has three
+    stages, which are build, test, and deploy.
+    */
+    stages {
+        stage("init") {
+            steps {
+                script {
+                    // Load the jenkins/script.groovy file into the gv variable
+                    gv = load 'jenkins/script.groovy'
+                }
+            }
+        }
+
+        stage("build") {
+            steps {
+                echo "building the ${APP_NAME} app..."
+                sh 'mvn --version'
+                script {
+                    gv.buildApp()
+                }
+            }
+        }
+
+        stage("test") {
+            when {
+                /*
+                When the branch is dev or main, then execute the test stage.
+                BRANCH_NAME is an environment variable that Jenkins provides.
+                */
+                expression {
+                    BRANCH_NAME == 'dev' || 'main'
+                }
+
+                // When the executeTests parameter true, then execute the test stage.
+                expression {
+                    params.executeTests
+                }
+            }
+            steps {
+                echo 'testing the application...'
+                script {
+                    gv.testApp()
+                }
+            }
+        }
+
+        stage("deploy") {
+            steps {
+                echo 'deploying the application...'
+                echo "deploying version ${VERSION}"
+                script {
+                    gv.deployApp()
+                }
+            }
+        }
+    }
+
+    // post will execute some logic after all stages have completed.
+    post {
+        always {
+            echo 'Build has finished.'
+        }
+        success {
+            echo 'Build has succeeded!'
+        }
+        failure {
+            echo 'Build has failed!'
+        }
+    }
+}
