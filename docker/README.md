@@ -27,6 +27,9 @@ To check the images in our system, run `docker images`
 To delete the image, run `docker image rm <IMAGE ID>`  
 To get back the image, run `docker pull <IMAGE NAME>`; for example, `docker pull nginx`
 
+To check the volumes in our system, run `docker volume ls`  
+To delete a volume, run `docker volume rm <VOLUME ID>`  
+
 ## 1. Creating your first container
 Run the command `docker container run -it -p 80:80 nginx` to run an Nginx web-server on port 80. Go to `localhost:80` and you can see the nginx server running in our container! Since we ran the command using the `-it` parameter (interactive mode), you can see the logs showing up on the console that ran the command. Here is the image that we ran https://hub.docker.com/_/nginx in our container.
 
