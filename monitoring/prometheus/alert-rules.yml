@@ -1,0 +1,13 @@
+groups:
+- name: availability
+  rules:
+  
+  # Alert when any instance is unreachable for >2 minutes
+  - alert: InstanceDown
+    expr: up == 0
+    for: 2m
+    labels:
+      severity: 2
+    annotations:
+      summary: "Instance {{ $labels.instance }} down"
+      description: "{{ $labels.instance }} of job {{ $labels.job }} has been down for more than 2 minutes."

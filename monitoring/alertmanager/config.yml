@@ -1,0 +1,12 @@
+route:
+  receiver: 'email-admin'
+
+receivers:
+  - name: 'email-admin'
+    email_configs:
+    - to: pravat.bhusal@gmail.com
+      from: <EMAIL HERE>
+      smarthost: smtp.gmail.com:587
+      auth_username: "<EMAIL HERE>"
+      auth_identity: "<EMAIL HERE>"
+      auth_password: "<PASSWORD HERE>"
