@@ -29,3 +29,5 @@ The test case "Renderer tree matches todo.test.js.snap" is an example of snapsho
 
 ### Cypress
 To run Cypress, execute `yarn run cypress open`. This will open a new window with the E2E tests. When you run a test on Cypress, you can see in real-time that the user events are being executed on the Chrome browser.
+
+Finding components on the UI using Cypress may be a pain, but thankfully Cypress UI integrates something called the "Selector Playground". Find more information on how to use this feature here https://www.youtube.com/watch?v=rNd047wXtwo.
